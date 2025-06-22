@@ -35,11 +35,11 @@
     width: 100%;                           /* 🔁 Ocupa todo el ancho disponible del slide */
     max-width: 350px;                      /* 🔒 Limita el ancho máximo para mantener proporción */
     min-height: 480px;                     /* ⬆️ Altura mínima para dar espacio al contenido */
-    border: 20px solid #0000;               /* 🎨 Borde grueso oscuro para efecto de marco */
+    border: 20px solid #000;               /* 🎨 Borde grueso oscuro para efecto de marco */
     border-radius: 32px;                   /* 🔄 Bordes redondeados sutiles en todo el contenedor */
     overflow: hidden;                      /* 🧼 Oculta contenido que se salga (ej: imagen o hover) */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 🌫️ Sombra suave para efecto de elevación */
-    background: #111;                      /* 🎨 Fondo negro/gris oscuro elegante para contraste */
+    background: #000;                      /* 🎨 Fondo negro/gris oscuro elegante para contraste de las letras debajo de imagen */
     display: flex;                         /* 🔧 Usa flexbox para distribuir contenido verticalmente */
     flex-direction: column;               /* ⬇️ Apila hijos (imagen y texto) verticalmente */
     justify-content: space-between;       /* ↕️ Separa parte superior (imagen) de inferior (texto) */
@@ -59,7 +59,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 8px; /*  Redondea todas las esquinas para encajar con .tf-card-box */
+    border-radius: 16px; /*  Redondea todas las esquinas para encajar con .tf-card-box */
 }
 
 /* 🏷️ Texto sobre la imagen */
@@ -108,7 +108,7 @@
     font-weight: 700;
     font-size: 15px;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 12px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
 .tf-button:hover {
@@ -128,14 +128,14 @@
 
 /* Nombre del proyecto o servicio */
 .name {
-    font-size: 18px;
+    font-size: 21px;
     font-weight: bold;
     color: #fff;
 }
 
 /*  Precio o especificación secundaria */
 .price {
-    font-size: 15px;
+    font-size: 17px;
     color: #ccc;
 }
 
@@ -155,12 +155,31 @@
 
 /*  Navegación del Swiper */
 .swiper-pagination {
-    position: absolute;
-    text-align: center;
-    transition: opacity 0.3s;
-    bottom: -10px;
-    width: 100%;
+    bottom: 65px !important;          /* ⬆️ Subido desde 10px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
+
+/* ⚪ Puntos de paginación inactivos */
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #bbb;                 /* 🎨 Color gris claro */
+    opacity: 1;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    transform: scale(1);
+}
+
+/* 🔵 Punto activo */
+.swiper-pagination-bullet-active {
+    background: #f0eaea;              /* 🎯 Color azul brillante */
+    transform: scale(1.5);            /* 🔍 Agrandado para destacar */
+    box-shadow: 0 0 8px rgba(175, 173, 173, 0.6); /* 💫 Efecto glow */
+}
+
 
 /*  Posición específica para paginación numerada */
 .pagination-number {
@@ -181,6 +200,19 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.pagination-number .swiper-pagination-bullet::after {
+  content: attr(data-index);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 
 .next-3d {
     right: 10px;
@@ -210,22 +242,80 @@
     font-size: 20px;
 }
 
+
+
+/* 🔥 Estilo especial para el slide central activo */
+.swiper-slide-active .tf-card-box {
+    box-shadow:
+        0 0 60px rgba(255, 255, 255, 0.15),   /* 🔆 resplandor blanco alrededor */
+        0 20px 30px rgba(0, 0, 0, 0.5),       /* ⬇️ sombra inferior */
+        0 -20px 30px rgba(0, 0, 0, 0.25),     /* ⬆️ sombra superior */
+        -20px 0 30px rgba(0, 0, 0, 0.25),     /* ⬅️ sombra izquierda */
+        20px 0 30px rgba(0, 0, 0, 0.25);      /* ➡️ sombra derecha */
+    transition: box-shadow 0.4s ease;
+    transform: scale(1.02);
+    z-index: 2;
+}
+
+
+/* 🖼️ Efecto de zoom suave al hacer hover en la imagen */
+.card-media {
+    overflow: hidden; /* 👈 importante para recortar el zoom */
+    position: relative;
+}
+
+.card-media .img-proyecto {
+    transition: transform 0.15s ease; /* ✨ transición suave */
+}
+
+.card-media:hover .img-proyecto {
+    transform: scale(1.10); /* 🔍 ligero zoom al hacer hover */
+}
+
+
+
 /* 📱 Responsividad para tabletas y móviles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    .swiper {
+        height: 680px; /* ⬇️ Ajusta altura general en pantallas más pequeñas */
+    }
+
     .tf-card-box {
-        max-width: 90%;
-        min-height: 420px;
+        max-width: 88%;           /* 📏 Que no ocupe el 100%, deja margen a los lados */
+        min-height: 440px;        /* ↕️ Altura ajustada para mantener proporción */
+        border: 16px solid #000000;  /* 🎨 Borde más delgado para evitar saturación visual */
+    }
+
+    .card-media {
+        height: 320px;            /* 🖼️ Da más espacio a la imagen en móvil/tablet */
     }
 
     .img-proyecto {
-        height: 180px;
+        height: 100%;             /* ✅ Que ocupe toda la altura del contenedor */
+        border-radius: 14px;      /* 🔄 Menos redondeado para pantallas pequeñas */
     }
 
     .name {
-        font-size: 16px;
+        font-size: 18px;          /* 🔠 Ajuste de texto para que no desborde */
     }
 
     .price {
-        font-size: 14px;
+        font-size: 16px;          /* 💲 Más pequeño pero legible */
+    }
+
+    .button-place-bid {
+        bottom: 15px;             /* 🧭 Reposicionado por menor altura */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 24px;
+        height: 40px;
+        margin-top: -20px;
+        background-size: 24px 40px;
+    }
+
+    .swiper-pagination {
+        bottom: 0px;              /* 📍 Subido para que se vea en móviles */
     }
 }

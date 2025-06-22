@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
       pagination: {
         el: '#projects-carousel .swiper-pagination.pagination-number',
         clickable: true,
+        renderBullet: function (index, className) {
+          return `<span class="${className}" data-index="${index + 1}"></span>`;
+        }
       },
       navigation: {
         nextEl: '#projects-carousel ~ .swiper-button-next.next-3d',
