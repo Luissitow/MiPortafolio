@@ -24,22 +24,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px 0; /* Mejora espaciado vertical */
 }
 
 .tf-card-box {
+    width: 100%;
+    max-width: 350px; /* Aumenta tamaño visible */
+    min-height: 450px; /* Altura mínima del bloque */
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-media {
     position: relative;
+    overflow: hidden;
 }
 
 .img-proyecto {
     width: 100%;
-    height: auto;
+    height: 220px; /* Tamaño fijo para uniformidad */
+    object-fit: cover;
     display: block;
 }
 
@@ -51,6 +61,7 @@
     color: #fff;
     padding: 5px 10px;
     border-radius: 4px;
+    font-size: 14px;
 }
 
 .button-place-bid {
@@ -73,6 +84,7 @@
 
 .meta-info {
     margin-top: 10px;
+    padding: 0 15px 15px;
 }
 
 .text-center {
@@ -80,19 +92,21 @@
 }
 
 .name {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
+    color: #333;
 }
 
 .price {
-    font-size: 14px;
-    color: #555;
+    font-size: 15px;
+    color: #666;
 }
 
 .gem {
     display: flex;
     align-items: center;
     gap: 5px;
+    justify-content: center;
 }
 
 .icon-gem {
@@ -104,6 +118,8 @@
     position: absolute;
     text-align: center;
     transition: opacity 0.3s;
+    bottom: -10px;
+    width: 100%;
 }
 
 .pagination-number {
@@ -147,4 +163,24 @@
 
 .icon-heart {
     font-size: 20px;
+}
+
+/* RESPONSIVE AJUSTES */
+@media (max-width: 768px) {
+    .tf-card-box {
+        max-width: 90%;
+        min-height: 420px;
+    }
+
+    .img-proyecto {
+        height: 180px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 14px;
+    }
 }
