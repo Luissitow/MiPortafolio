@@ -89,13 +89,19 @@
 }
 
 /*  Muestra el botón con animación al hacer hover */
-.card-media:hover .button-place-bid,
+.tf-card-box:hover .button-place-bid,
 .card-media.show-button .button-place-bid {
     opacity: 1;
-    transform: translate(-50%, 0);  /*  Animación hacia arriba */
+    transform: translate(-50%, 0); /*  animacion hacia arriba */
     pointer-events: auto;
     visibility: visible;
 }
+
+.tf-card-box:hover .img-proyecto {
+    transform: scale(1.10);
+}
+
+
 
 /* 🔘 Estilo visual del botón  */
 .tf-button {
