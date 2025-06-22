@@ -6,7 +6,7 @@
 /* 🎞️ Contenedor principal del Swiper */
 .swiper {
     width: 100%;
-    height: 580px;
+    height: 790px;
 }
 
 /* 🎞️ Estilos base del carrusel Swiper 3D */
@@ -32,36 +32,37 @@
 
 /* 📦 Caja principal de la tarjeta (contenedor completo) */
 .tf-card-box {
-    width: 100%;
-    max-width: 500px;
-    min-height: 400px; /* ⬆️ Aumentado desde 420 o 450px */
-    border: 20px solid #444;               /* 👈 Delimita bordes interiores oscuros */
-    border-radius: 12px;                  /* 👈 Bordes sutilmente redondeados */
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    background: #111;                     /* 👈 Fondo oscuro que da contraste */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 100%;                           /* 🔁 Ocupa todo el ancho disponible del slide */
+    max-width: 350px;                      /* 🔒 Limita el ancho máximo para mantener proporción */
+    min-height: 480px;                     /* ⬆️ Altura mínima para dar espacio al contenido */
+    border: 20px solid #0000;               /* 🎨 Borde grueso oscuro para efecto de marco */
+    border-radius: 32px;                   /* 🔄 Bordes redondeados sutiles en todo el contenedor */
+    overflow: hidden;                      /* 🧼 Oculta contenido que se salga (ej: imagen o hover) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 🌫️ Sombra suave para efecto de elevación */
+    background: #111;                      /* 🎨 Fondo negro/gris oscuro elegante para contraste */
+    display: flex;                         /* 🔧 Usa flexbox para distribuir contenido verticalmente */
+    flex-direction: column;               /* ⬇️ Apila hijos (imagen y texto) verticalmente */
+    justify-content: space-between;       /* ↕️ Separa parte superior (imagen) de inferior (texto) */
 }
 
 /* 📸 Contenedor de imagen + botón (parte superior de la tarjeta) */
 .card-media {
     position: relative;
     overflow: hidden;
-    border-radius: 12px; /* 🔁 también aquí por si hay superposición de hover o botón */
+    border-radius: 0px; /* 🔁 también aquí por si hay superposición de hover o botón */
+    height: 340px;        /* ⬆️ Aumenta altura para evitar espacio negro */
 }
 
 /* 🖼️ Imagen del proyecto (con bordes redondeados internos) */
 .img-proyecto {
     width: 100%;
-    height: 220px;
+    height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 12px; /* 🔄 Redondea todas las esquinas para encajar con .tf-card-box */
+    border-radius: 8px; /*  Redondea todas las esquinas para encajar con .tf-card-box */
 }
 
-/* 🏷️ Texto sobre la imagen (como el modelo del auto) */
+/* 🏷️ Texto sobre la imagen */
 .featured-countdown {
     position: absolute;
     top: 10px;
@@ -74,11 +75,11 @@
     font-weight: bold;
 }
 
-/* 💡 Botón oculto por defecto, aparecerá con animación */
+/*  Botón oculto por defecto, aparecerá con animación */
 .button-place-bid {
     opacity: 0;
-    transform: translateY(20px); /* 👈 Escondido hacia abajo */
-    transition: all 0.4s ease;
+    transform: translateY(20px); /*  Escondido hacia abajo */
+    transition: all 0.6s ease;
     pointer-events: none;
     visibility: hidden;
     position: absolute;
@@ -87,16 +88,16 @@
     transform: translate(-50%, 20px);
 }
 
-/* 👆 Muestra el botón con animación al hacer hover */
+/*  Muestra el botón con animación al hacer hover */
 .card-media:hover .button-place-bid,
 .card-media.show-button .button-place-bid {
     opacity: 1;
-    transform: translate(-50%, 0);  /* 👈 Animación hacia arriba */
+    transform: translate(-50%, 0);  /*  Animación hacia arriba */
     pointer-events: auto;
     visibility: visible;
 }
 
-/* 🔘 Estilo visual del botón "Cotiza" */
+/* 🔘 Estilo visual del botón  */
 .tf-button {
     display: inline-block;
     padding: 10px 24px;
@@ -114,31 +115,31 @@
     background: #fff;
 }
 
-/* 📝 Información textual debajo de la imagen */
+/*  Información textual debajo de la imagen */
 .meta-info {
-    margin-top: 10px;
+    margin-top: 0px;
     padding: 15px;
 }
 
-/* 🎯 Alineación de texto */
+/*  Alineación de texto */
 .text-center {
     text-align: center;
 }
 
-/* 🔠 Nombre del proyecto o servicio */
+/* Nombre del proyecto o servicio */
 .name {
     font-size: 18px;
     font-weight: bold;
     color: #fff;
 }
 
-/* 💰 Precio o especificación secundaria */
+/*  Precio o especificación secundaria */
 .price {
     font-size: 15px;
     color: #ccc;
 }
 
-/* 💎 Contenedor de ícono + valor (si se usa) */
+/*  Contenedor de ícono + valor (si se usa) */
 .gem {
     display: flex;
     align-items: center;
@@ -146,13 +147,13 @@
     justify-content: center;
 }
 
-/* 💎 Ícono decorativo */
+/* Ícono decorativo */
 .icon-gem {
     font-size: 16px;
     color: #ffcc00;
 }
 
-/* 🔘 Navegación del Swiper */
+/*  Navegación del Swiper */
 .swiper-pagination {
     position: absolute;
     text-align: center;
@@ -161,7 +162,7 @@
     width: 100%;
 }
 
-/* 🎯 Posición específica para paginación numerada */
+/*  Posición específica para paginación numerada */
 .pagination-number {
     bottom: 10px;
 }
