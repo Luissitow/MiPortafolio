@@ -1,112 +1,144 @@
-/* Estilos para el carrusel */
-
+/* 📦 Contenedor relativo general (necesario para elementos posicionados) */
 .relative {
     position: relative;
 }
 
+/* 🎞️ Contenedor principal del Swiper */
 .swiper {
     width: 100%;
-    height: 100%;
+    height: 580px;
 }
 
+/* 🎞️ Estilos base del carrusel Swiper 3D */
 .swiper-3d-7 {
-    /* Personaliza según tus necesidades */
+    /* (Opcional) personalizar si se desea */
 }
 
+/* 🎞️ Contenedor de slides (hijos directos son .swiper-slide) */
 .swiper-wrapper {
     display: flex;
 }
 
+/* 🎞️ Cada tarjeta / slide individual */
 .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0; /* Mejora espaciado vertical */
+    height: 100%; /* 💡 Asegura que cada slide se adapte al nuevo alto del swiper */
 }
 
+/* 📦 Caja principal de la tarjeta (contenedor completo) */
 .tf-card-box {
     width: 100%;
-    max-width: 350px; /* Aumenta tamaño visible */
-    min-height: 450px; /* Altura mínima del bloque */
-    border: 1px solid #ddd;
-    border-radius: 30px;
+    max-width: 500px;
+    min-height: 400px; /* ⬆️ Aumentado desde 420 o 450px */
+    border: 20px solid #444;               /* 👈 Delimita bordes interiores oscuros */
+    border-radius: 12px;                  /* 👈 Bordes sutilmente redondeados */
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background: #111;                     /* 👈 Fondo oscuro que da contraste */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+/* 📸 Contenedor de imagen + botón (parte superior de la tarjeta) */
 .card-media {
     position: relative;
     overflow: hidden;
+    border-radius: 12px; /* 🔁 también aquí por si hay superposición de hover o botón */
 }
 
+/* 🖼️ Imagen del proyecto (con bordes redondeados internos) */
 .img-proyecto {
     width: 100%;
-    height: 220px; /* Tamaño fijo para uniformidad */
+    height: 220px;
     object-fit: cover;
     display: block;
+    border-radius: 12px; /* 🔄 Redondea todas las esquinas para encajar con .tf-card-box */
 }
 
+/* 🏷️ Texto sobre la imagen (como el modelo del auto) */
 .featured-countdown {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    top: 10px;
+    right: 10px;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
+    padding: 5px 12px;
+    border-radius: 12px;
     font-size: 14px;
+    font-weight: bold;
 }
 
+/* 💡 Botón oculto por defecto, aparecerá con animación */
 .button-place-bid {
-    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(20px); /* 👈 Escondido hacia abajo */
+    transition: all 0.4s ease;
+    pointer-events: none;
+    visibility: hidden;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 20px);
 }
 
+/* 👆 Muestra el botón con animación al hacer hover */
+.card-media:hover .button-place-bid,
+.card-media.show-button .button-place-bid {
+    opacity: 1;
+    transform: translate(-50%, 0);  /* 👈 Animación hacia arriba */
+    pointer-events: auto;
+    visibility: visible;
+}
+
+/* 🔘 Estilo visual del botón "Cotiza" */
 .tf-button {
     display: inline-block;
-    padding: 10px 20px;
-    background: #007bff;
-    color: #fff;
+    padding: 10px 24px;
+    background: #e5e5e5;
+    color: #111;
     text-decoration: none;
-    border-radius: 9px; /* 👈 redondeado sutil */
-    font-weight: 500;
-    font-size: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 3px 12px rgba(255, 255, 255, 0.15);
 }
 
 .tf-button:hover {
-    background: #0056b3;
+    background: #fff;
 }
 
-
-
+/* 📝 Información textual debajo de la imagen */
 .meta-info {
     margin-top: 10px;
-    padding: 0 15px 15px;
+    padding: 15px;
 }
 
+/* 🎯 Alineación de texto */
 .text-center {
     text-align: center;
 }
 
+/* 🔠 Nombre del proyecto o servicio */
 .name {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: #fff;
 }
 
+/* 💰 Precio o especificación secundaria */
 .price {
     font-size: 15px;
-    color: #666;
+    color: #ccc;
 }
 
+/* 💎 Contenedor de ícono + valor (si se usa) */
 .gem {
     display: flex;
     align-items: center;
@@ -114,11 +146,13 @@
     justify-content: center;
 }
 
+/* 💎 Ícono decorativo */
 .icon-gem {
     font-size: 16px;
     color: #ffcc00;
 }
 
+/* 🔘 Navegación del Swiper */
 .swiper-pagination {
     position: absolute;
     text-align: center;
@@ -127,10 +161,12 @@
     width: 100%;
 }
 
+/* 🎯 Posición específica para paginación numerada */
 .pagination-number {
     bottom: 10px;
 }
 
+/* ⬅️➡️ Flechas de navegación */
 .swiper-button-next,
 .swiper-button-prev {
     position: absolute;
@@ -153,10 +189,12 @@
     left: 10px;
 }
 
+/* 🗂️ Superposición de elementos sobre swiper */
 .over {
     z-index: 11;
 }
 
+/* ❤️ Botón tipo favorito */
 .wishlist-button {
     position: absolute;
     top: 10px;
@@ -166,11 +204,12 @@
     cursor: pointer;
 }
 
+/* ❤️ Estilo del ícono */
 .icon-heart {
     font-size: 20px;
 }
 
-/* RESPONSIVE AJUSTES */
+/* 📱 Responsividad para tabletas y móviles */
 @media (max-width: 768px) {
     .tf-card-box {
         max-width: 90%;
@@ -188,23 +227,4 @@
     .price {
         font-size: 14px;
     }
-}
-
-
-/* Estado inicial del botón oculto */
-.button-place-bid {
-    opacity: 0;
-    transform: translateY(20px); /* Esconde hacia abajo */
-    transition: all 0.4s ease;
-    pointer-events: none;
-    visibility: hidden;
-}
-
-/* Al hacer hover (PC) o tener clase show-button (móvil) */
-.card-media:hover .button-place-bid,
-.card-media.show-button .button-place-bid {
-    opacity: 1;
-    transform: translateY(0); /* Aparece desde abajo */
-    pointer-events: auto;
-    visibility: visible;
 }
