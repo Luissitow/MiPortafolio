@@ -184,3 +184,22 @@
         font-size: 14px;
     }
 }
+
+
+/* Estado inicial del botón oculto */
+.button-place-bid {
+    opacity: 0;
+    transform: translateY(20px); /* Esconde hacia abajo */
+    transition: all 0.4s ease;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Al hacer hover (PC) o tener clase show-button (móvil) */
+.card-media:hover .button-place-bid,
+.card-media.show-button .button-place-bid {
+    opacity: 1;
+    transform: translateY(0); /* Aparece desde abajo */
+    pointer-events: auto;
+    visibility: visible;
+}

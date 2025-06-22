@@ -84,3 +84,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Lógica para mostrar el botón "Cotiza" al hacer clic en móvil
+document.querySelectorAll('.card-media').forEach(media => {
+  media.addEventListener('click', function () {
+    // Si ya estaba activo, quítalo
+    if (media.classList.contains('show-button')) {
+      media.classList.remove('show-button');
+    } else {
+      // Quita clase a todos y activa solo el que se tocó
+      document.querySelectorAll('.card-media').forEach(el => el.classList.remove('show-button'));
+      media.classList.add('show-button');
+    }
+  });
+});
