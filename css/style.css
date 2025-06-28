@@ -4228,3 +4228,39 @@ html.is-animating .mil-menu-frame {
   -webkit-transition-delay: 0.3s;
           transition-delay: 0.3s;
 }
+
+
+.mil-h2-center {
+  font-size: 80px; /* Aumenta el tamaño de la fuente */
+  line-height: 130%; /* Ajusta el espacio entre líneas */
+  font-family: "Outfit", sans-serif;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  text-align: center;
+  margin-top: 50px; /* Agrega más separación desde arriba */
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  .mil-h2-center { font-size: 70px; }
+}
+@media screen and (max-width: 992px) {
+  .mil-h2-center { font-size: 60px; }
+}
+@media screen and (max-width: 768px) {
+  .mil-h2-center { font-size: 50px; }
+}
+
+.mil-mb-30 {
+  margin-bottom: -30px; /* Reduce el margen inferior */
+}
+
+
+.mil-light-soft {
+  font-size: 16px; /* Tamaño de fuente */
+  line-height: 1.6; /* Altura de línea para mejor legibilidad */
+  color: rgba(0, 0, 0, 0.7); /* Color suave */
+  font-family: "Outfit", sans-serif; /* Fuente consistente con el diseño */
+  margin-top: 60px; /* Ajusta la separación desde el título */
+}
+

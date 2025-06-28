@@ -101,3 +101,149 @@ document.querySelectorAll('.card-media').forEach(media => {
     }
   });
 });
+
+//modeal
+document.addEventListener('DOMContentLoaded', function() {
+  // Datos de los proyectos
+  const projectsData = {
+    ecommerce: {
+      title: "Plataforma E-commerce",
+      description: "Desarrollo completo de una plataforma de comercio electrónico con carrito de compras, pasarela de pago integrada y panel de administración avanzado.",
+      technologies: ["React", "Node.js", "MongoDB", "Redux", "Stripe"],
+      images: [
+        "/img/proyectos/ecommerce-1.jpg",
+        "/img/proyectos/ecommerce-2.jpg",
+        "/img/proyectos/ecommerce-3.jpg"
+      ],
+      features: [
+        "Catálogo de productos con filtros avanzados",
+        "Sistema de valoraciones y reseñas",
+        "Integración con Stripe y PayPal",
+        "Dashboard analítico para administrador",
+        "Optimizado para SEO y rendimiento"
+      ],
+      demoUrl: "#",
+      githubUrl: "#"
+    },
+    finance: {
+      title: "App de Gestión Financiera",
+      description: "Aplicación web y móvil para gestión de finanzas personales con análisis de gastos, presupuestos personalizados y gráficos interactivos.",
+      technologies: ["Vue.js", "Firebase", "Chart.js", "Vuex", "PWA"],
+      images: [
+        "/img/proyectos/finance-1.jpg",
+        "/img/proyectos/finance-2.jpg",
+        "/img/proyectos/finance-3.jpg"
+      ],
+      features: [
+        "Sincronización en tiempo real",
+        "Informes personalizados",
+        "Notificaciones inteligentes",
+        "Modo offline disponible",
+        "Autenticación segura"
+      ],
+      demoUrl: "#",
+      githubUrl: "#"
+    },
+    education: {
+      title: "Portal Educativo Interactivo",
+      description: "Plataforma LMS para aprendizaje online con cursos interactivos, sistema de evaluación y seguimiento de progreso.",
+      technologies: ["MERN Stack", "Socket.io", "JWT", "AWS S3"],
+      images: [
+        "/img/proyectos/education-1.jpg",
+        "/img/proyectos/education-2.jpg",
+        "/img/proyectos/education-3.jpg"
+      ],
+      features: [
+        "Cursos con lecciones multimedia",
+        "Sistema de certificación",
+        "Foros de discusión",
+        "Evaluaciones automatizadas",
+        "Panel de progreso"
+      ],
+      demoUrl: "#",
+      githubUrl: "#"
+    }
+    // ... puedes agregar más proyectos aquí
+  };
+
+  // Modal functionality
+  const modal = document.getElementById('projectModal');
+  const openModalButtons = document.querySelectorAll('.open-modal');
+  const closeModal = document.querySelector('.mil-close');
+
+  openModalButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const projectId = this.getAttribute('data-project');
+      loadProjectData(projectId);
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeModal.addEventListener('click', function() {
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  });
+
+  window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  function loadProjectData(projectId) {
+    const project = projectsData[projectId];
+    if (!project) return;
+
+    // Actualizar contenido
+    document.getElementById('modalTitle').textContent = project.title;
+    document.getElementById('modalDescription').textContent = project.description;
+
+    // Tecnologías
+    const techContainer = document.querySelector('.mil-project-meta');
+    techContainer.innerHTML = '';
+    project.technologies.forEach(tech => {
+      const techSpan = document.createElement('span');
+      techSpan.className = 'mil-tech-tag';
+      techSpan.textContent = tech;
+      techContainer.appendChild(techSpan);
+    });
+
+    // Imágenes
+    const mainImage = document.getElementById('modalMainImage');
+    const thumbContainer = document.querySelector('.mil-thumbnail-container');
+    thumbContainer.innerHTML = '';
+
+    if (project.images.length > 0) {
+      mainImage.src = project.images[0];
+      mainImage.alt = project.title;
+
+      project.images.forEach((img, index) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'mil-thumbnail' + (index === 0 ? ' active' : '');
+        thumb.innerHTML = `<img src="${img}" alt="Miniatura ${index + 1}">`;
+        thumb.addEventListener('click', function() {
+          document.querySelectorAll('.mil-thumbnail').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          mainImage.src = img;
+        });
+        thumbContainer.appendChild(thumb);
+      });
+    }
+
+    // Características
+    const featuresList = document.querySelector('.mil-features-list');
+    featuresList.innerHTML = '';
+    project.features.forEach(feature => {
+      const li = document.createElement('li');
+      li.className = 'mil-feature-item';
+      li.innerHTML = `<i class="fas fa-check-circle mil-accent"></i> ${feature}`;
+      featuresList.appendChild(li);
+    });
+
+    // Enlaces
+    document.querySelector('.live-demo').href = project.demoUrl;
+    document.querySelector('.github-link').href = project.githubUrl;
+  }
+});
